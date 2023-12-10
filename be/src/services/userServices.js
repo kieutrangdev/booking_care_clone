@@ -1,17 +1,17 @@
 const db = require("../models/index")
-const bcryptjs = require("bcryptjs")
+const bcrypt = require("bcryptjs")
 let handleUserLogin = (email,password) => {
     return new Promise(async(resolve, reject) => {
         try {
             let userdata = {}
             let isExist = await checkUserEmail(email)
             if(isExist) {
-                
                 let user = await db.User.findOne({
                     where: {email: email}
                 })
+                
                 if(user) {
-                    let check = await bcryptjs.compareSync(password, user.password)
+                    let check = await bcrypt.compareSync(password, user.password)
                     if(check) {
                         userdata.errCode = 0
                         userdata.errMessage = 'ok'

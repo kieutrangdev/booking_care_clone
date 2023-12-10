@@ -25,13 +25,14 @@ let createNewUser = async(data) => {
 }
 
 let hashUserPassword = (password) => {
-    return new Promise(async(resolve, reject) => {
+    return new Promise((resolve, reject) => {
         try {
-            let hashPasword = await bcrypt.hashSync("B4c0/\/", salt);
-            resolve(hashPasword)
+            var hash = bcrypt.hashSync(password, salt);
+            resolve(hash)
         } catch (error) {
-            reject(error)   
+            reject(error)
         }
+
     })
 }
 module.exports = {
