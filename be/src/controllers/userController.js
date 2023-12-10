@@ -9,11 +9,11 @@ let handleLogin = async(req, res) => {
             message: 'Missing input parameter!'
         })
     }
-    let userData = await userServices.handleUserLogin(email,password)
+    let userdata = await userServices.handleUserLogin(email,password)
     return res.status(200).json({
-       errCode: userData.errCode,
-       message: userData.errMessage,
-       userData
+       errCode: userdata.errCode,
+       message: userdata.errMessage,
+       userdata
     })
 }
 
